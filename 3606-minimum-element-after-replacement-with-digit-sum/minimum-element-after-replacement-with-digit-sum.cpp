@@ -1,21 +1,18 @@
 class Solution {
 public:
     int minElement(vector<int>& nums) {
-           vector<int> n_nums(nums.size());
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        int min_val=INT_MAX;
         for(int i=0;i<nums.size();i++){
-            while(nums[i]>0){
-                n_nums[i]+=nums[i]%10;
-                nums[i]/=10;
+             int temp=nums[i];
+             int sum=0;
+            while(temp>0){
+                sum+=temp%10;
+                temp/=10;
             }
+        min_val=min(min_val,sum);
         }
-        int min=n_nums[0];
-          for(int i=0;i<n_nums.size();i++){
-        if(n_nums[i]<min){
-            min=n_nums[i];
-
-        }
-
-}  
-        return min;
+    return min_val;
     }
 };
