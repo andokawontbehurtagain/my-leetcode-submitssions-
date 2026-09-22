@@ -1,11 +1,16 @@
 class Solution {
 public:
     int countGoodTriplets(vector<int>& arr, int a, int b, int c) {
-        int count=0;
-        for(int i=0;i<arr.size();i++){
-            for(int j=i+1;j<arr.size();j++){
-                for(int k=j+1;k<arr.size();k++){
-                    if(abs(arr[i]-arr[j])<=a && abs(arr[j]-arr[k])<=b &&abs(arr[i]-arr[k])<=c){
+        int count = 0;
+        int n = arr.size();
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                // Tối ưu: Nếu điều kiện 1 sai, skip luôn vòng lặp k
+                if (abs(arr[i] - arr[j]) > a) continue;
+
+                for (int k = j + 1; k < n; ++k) {
+                    if (abs(arr[j] - arr[k]) <= b && abs(arr[i] - arr[k]) <= c) {
                         count++;
                     }
                 }
