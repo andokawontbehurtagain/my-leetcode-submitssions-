@@ -4,9 +4,9 @@ public:
         int move=0;
         sort(seats.begin(),seats.end());
         sort(students.begin(),students.end());
-        for(int i=0;i<students.size();i++){
-            move+=abs(seats[i]-students[i]);
-        }
+        for (auto [seats, students] : std::views::zip(seats, students)) {
+            move+=abs(seats-students);
+}
     return move;
     }
 };
