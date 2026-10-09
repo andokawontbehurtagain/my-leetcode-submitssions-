@@ -1,11 +1,13 @@
 class Solution {
 public:
     string restoreString(string s, vector<int>& indices) {     
-        string t;
-        t.resize(s.size());
         for(int i=0;i<s.size();i++){
-           t[indices[i]]=s[i]; 
-        }
-    return t;
+           while (indices[i] != i) {
+                int target = indices[i]; // Lưu chỉ số đích an toàn
+                swap(s[i], s[target]);
+                swap(indices[i], indices[target]);
+           }
+    }
+return s;
     }
 };
