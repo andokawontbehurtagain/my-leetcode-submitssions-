@@ -1,16 +1,20 @@
 class Solution {
 public:
     int sumOfUnique(vector<int>& nums) {
-       map<int,int> mp;
-        for(int i=0;i<nums.size();i++){
-           mp[nums[i]]++;
+      int sum=0;
+      vector<int> freq(101);
+      for(int x:nums){
+        if(freq[x] == 0){
+            sum+=x;
+            freq[x]++;
         }
-        int sum=0;
-    for (auto pair : mp){
-        if(pair.second==1){
-            sum+=pair.first;
+        else if(freq[x]==1){
+            sum-=x;
+            freq[x]++;
+        } else{
+            freq[x]++;
         }
-    }
-    return sum;
+      }
+      return sum;
     }
 };
